@@ -1,5 +1,12 @@
 # Changelog
 
+## Bundle Report 2026.11.08
+
+- Bundle Report now updates itself. It checks for new versions automatically, and you can check anytime with Bundle Report → Check for Updates….
+- Updates are delivered with Sparkle and are signed and verified before they install.
+- This is the first release with automatic updates, so earlier versions must install it manually once.
+- Known issue: on macOS 27.0.x, the toolbar buttons appear as separate buttons instead of grouped sets. This is a macOS issue fixed in macOS 27.2.
+
 ## Bundle Report 2026.10.21
 
 - Refresh now reflects updated app version numbers after an in-place app update.
