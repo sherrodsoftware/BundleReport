@@ -1,11 +1,22 @@
+import Sparkle
 import SwiftUI
 
 @main
 struct BundleReportApp: App {
+    @NSApplicationDelegateAdaptor private var appDelegate: AppDelegate
     @StateObject private var catalog = AppCatalog()
     @AppStorage("showUtilityApps") private var showUtilityApps = false
     @AppStorage("showAppleDefaultApps") private var showAppleDefaultApps = true
     @AppStorage("showPersonalApps") private var showPersonalApps = true
+
+    // Started from the app delegate, not here: starting during App init lets
+    // Sparkle's permission prompt appear before SwiftUI opens the main window.
+    static let updaterController = SPUStandardUpdaterController(
+        startingUpdater: false,
+        updaterDelegate: nil,
+        userDriverDelegate: nil
+    )
+    private let updateAvailability = UpdateAvailability(updater: updaterController.updater)
 
     var body: some Scene {
         WindowGroup {
@@ -20,6 +31,11 @@ struct BundleReportApp: App {
         }
 
         .commands {
+            UpdateCommands(
+                updater: Self.updaterController.updater,
+                availability: updateAvailability
+            )
+
             SidebarCommands()
 
             CommandGroup(after: .sidebar) {
@@ -43,6 +59,14 @@ struct BundleReportApp: App {
                     showPersonalApps.toggle()
                 }
             }
+        }
+    }
+}
+
+final class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationDidFinishLaunching(_ notification: Notification) {
+        DispatchQueue.main.async {
+            BundleReportApp.updaterController.startUpdater()
         }
     }
 }

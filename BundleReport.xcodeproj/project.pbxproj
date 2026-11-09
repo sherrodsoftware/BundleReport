@@ -14,6 +14,8 @@
 		A105 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = A206 /* AppIcon.icon */; };
 		B101 /* AppCatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B201 /* AppCatalogTests.swift */; };
 		B102 /* AppCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A202 /* AppCatalog.swift */; };
+		C101 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = C802 /* Sparkle */; };
+		C102 /* UpdateCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = C201 /* UpdateCommands.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		A206 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		B201 /* AppCatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCatalogTests.swift; sourceTree = "<group>"; };
 		B205 /* BundleReportTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BundleReportTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C201 /* UpdateCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCommands.swift; sourceTree = "<group>"; };
+		C202 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C101 /* Sparkle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,7 +66,9 @@
 				A201 /* BundleReportApp.swift */,
 				A202 /* AppCatalog.swift */,
 				A203 /* BundleReportView.swift */,
+				C201 /* UpdateCommands.swift */,
 				A204 /* Assets.xcassets */,
+				C202 /* Info.plist */,
 			);
 			path = BundleReport;
 			sourceTree = "<group>";
@@ -99,6 +106,9 @@
 			dependencies = (
 			);
 			name = "Bundle Report";
+			packageProductDependencies = (
+				C802 /* Sparkle */,
+			);
 			productName = "Bundle Report";
 			productReference = A205 /* Bundle Report.app */;
 			productType = "com.apple.product-type.application";
@@ -145,6 +155,9 @@
 				Base,
 			);
 			mainGroup = A401;
+			packageReferences = (
+				C801 /* XCRemoteSwiftPackageReference "Sparkle" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A403 /* Products */;
 			projectDirPath = "";
@@ -176,6 +189,7 @@
 				A101 /* BundleReportApp.swift in Sources */,
 				A102 /* AppCatalog.swift in Sources */,
 				A103 /* BundleReportView.swift in Sources */,
+				C102 /* UpdateCommands.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,7 +240,7 @@
 				AUTOMATION_APPLE_EVENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 2026110802;
 				DEVELOPMENT_TEAM = LAR9U97K23;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -236,9 +250,11 @@
 				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
 				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BundleReport/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Bundle Report";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				MARKETING_VERSION = 2026.10.21;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				MARKETING_VERSION = 2026.11.08;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sherrodsoftware.BundleReport;
 				PRODUCT_NAME = "Bundle Report";
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
@@ -259,7 +275,7 @@
 				AUTOMATION_APPLE_EVENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 2026110802;
 				DEVELOPMENT_TEAM = LAR9U97K23;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
@@ -269,9 +285,11 @@
 				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
 				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BundleReport/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Bundle Report";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				MARKETING_VERSION = 2026.10.21;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/../Frameworks";
+				MARKETING_VERSION = 2026.11.08;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sherrodsoftware.BundleReport;
 				PRODUCT_NAME = "Bundle Report";
 				RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES = NO;
@@ -352,6 +370,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C801 /* XCRemoteSwiftPackageReference "Sparkle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sparkle-project/Sparkle";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C802 /* Sparkle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C801 /* XCRemoteSwiftPackageReference "Sparkle" */;
+			productName = Sparkle;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A801 /* Project object */;
 }
