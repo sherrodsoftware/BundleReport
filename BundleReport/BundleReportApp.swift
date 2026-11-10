@@ -31,6 +31,30 @@ struct BundleReportApp: App {
         }
 
         .commands {
+            // Matches the About panel in Version Report: copyright and a
+            // link to the Sherrod Software website below the version.
+            CommandGroup(replacing: .appInfo) {
+                Button("About Bundle Report") {
+                    let credits = NSMutableAttributedString()
+                    let smallFont = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
+                    credits.append(NSAttributedString(
+                        string: "© Sherrod Software\n",
+                        attributes: [.font: smallFont]
+                    ))
+                    credits.append(NSAttributedString(
+                        string: "www.sherrodsoftware.com",
+                        attributes: [
+                            .font: smallFont,
+                            .link: URL(string: "https://www.sherrodsoftware.com")!
+                        ]
+                    ))
+                    NSApplication.shared.orderFrontStandardAboutPanel(options: [
+                        .applicationName: "Bundle Report",
+                        .credits: credits
+                    ])
+                }
+            }
+
             UpdateCommands(
                 updater: Self.updaterController.updater,
                 availability: updateAvailability
