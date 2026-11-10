@@ -60,6 +60,16 @@ struct BundleReportApp: App {
                 availability: updateAvailability
             )
 
+            // Bundle Report has no Help Book; its documentation is the README.
+            CommandGroup(replacing: .help) {
+                Button("Bundle Report Help") {
+                    NSWorkspace.shared.open(
+                        URL(string: "https://github.com/sherrodsoftware/BundleReport")!
+                    )
+                }
+                .keyboardShortcut("?", modifiers: .command)
+            }
+
             SidebarCommands()
 
             CommandGroup(after: .sidebar) {
